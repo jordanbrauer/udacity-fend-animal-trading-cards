@@ -2,27 +2,47 @@
 <html>
 <head>
 	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Animal Trading Cards</title>
+  <meta name="author" content="Jordan Brauer">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/rpg-awesome.min.css">
 </head>
 <body>
-	<div>
-		<!-- your favorite animal's name goes here -->
-		<h3>Animal's name</h3>
-		<!-- your favorite animal's image goes here -->
-		<img src="placeholder.png" alt="name-of-your-animal">
-		<div>
-			<!-- your favorite animal's interesting fact goes here -->
-			<p>Write an interesting fact about your favorite animal...</p>
-			<ul>
-				<!-- your favorite animal's list items go here -->
-				<li><span>Label</span>: Item #1</li>
-				<li><span>Label</span>: Item #2</li>
-				<li><span>Label</span>: Item #3</li>
-				<li><span>Label</span>: Item #4</li>
-			</ul>
-			<!-- your favorite animal's description goes here -->
-			<p>Write a brief description about your favorite animal...</p>
-		</div>
-	</div>
+  <!-- # Trading Card -->
+	<div class="trading-card">
+    <!-- ## Trading Card Header -->
+    <div class="trading-card-header">
+      <h3 class="trading-card-title">
+        Alfhildr of the Bloodmoor
+        <small class="trading-card-stat"></small>
+      </h3>
+      <div class="trading-card-type">
+        30 <i class="ra ra-health"></i>
+      </div>
+      <div class="clearfix"></div>
+    </div> <!-- /.trading-card-header -->
+
+    <!-- ## Trading Card Body -->
+    <div class="trading-card-body">
+      <div class="trading-card-image">
+        <img src="img/werewolf.jpg" alt="name-of-your-animal">
+      </div>
+      <div class="trading-card-info">
+        <ul class="trading-card-list">
+          <li><span class="trading-card-label"><i class="ra ra-health"></i> HP:</span> 30</li>
+          <li><span class="trading-card-label"><i class="ra ra-round-shield"></i> AC:</span> 12</li>
+          <li><span class="trading-card-label"><i class="ra ra-sword"></i> Physical:</span> 1d8</li>
+          <li><span class="trading-card-label"><i class="ra ra-crystal-wand"></i> Magic:</span> 0</li>
+        </ul>
+        <p class="trading-card-text">Write an interesting fact about your favorite animal...</p>
+      </div>
+    </div> <!-- /.trading-card-body -->
+
+    <!-- ## Trading Card Footer -->
+    <div class="trading-card-footer">
+			<p class="trading-card-text">Write a brief description about your favorite animal...</p>
+		</div> <!-- /.trading-card-footer -->
+	</div> <!-- /.trading-card -->
 </body>
 </html>

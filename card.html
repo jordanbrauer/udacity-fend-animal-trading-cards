@@ -5,44 +5,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Animal Trading Cards</title>
   <meta name="author" content="Jordan Brauer">
+  <!-- css -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/rpg-awesome.min.css">
+  <link rel="stylesheet" href="css/aniron.css">
+  <link rel="stylesheet" href="css/immortal.css">
 </head>
 <body>
-  <!-- # Trading Card -->
-	<div class="trading-card">
-    <!-- ## Trading Card Header -->
-    <div class="trading-card-header">
-      <h3 class="trading-card-title">
-        Alfhildr of the Bloodmoor
-        <small class="trading-card-stat"></small>
-      </h3>
-      <div class="trading-card-type">
-        30 <i class="ra ra-health"></i>
-      </div>
-      <div class="clearfix"></div>
-    </div> <!-- /.trading-card-header -->
+  <div id="canvas">
+    <!-- # Trading Card -->
+    <div class="trading-card">
+      <!-- ## Trading Card Header -->
+      <div class="trading-card-header">
+        <div class="trading-card-level">
+          <!-- <i class="ra ra-lg ra-wolf-head"></i> -->
+          Lv.4
+        </div>
+        <div class="trading-card-type">
+          <ul>
+            <li>Creature</li>
+            <li>Hero</li>
+            <li>Lycanthrope Shaman</li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <h3 class="trading-card-title">Alfhildr, Scourge of Blackmarsh</h3>
+      </div> <!-- /.trading-card-header -->
 
-    <!-- ## Trading Card Body -->
-    <div class="trading-card-body">
-      <div class="trading-card-image">
-        <img src="img/werewolf.jpg" alt="name-of-your-animal">
-      </div>
-      <div class="trading-card-info">
-        <ul class="trading-card-list">
-          <li><span class="trading-card-label"><i class="ra ra-health"></i> HP:</span> 30</li>
-          <li><span class="trading-card-label"><i class="ra ra-round-shield"></i> AC:</span> 12</li>
-          <li><span class="trading-card-label"><i class="ra ra-sword"></i> Physical:</span> 1d8</li>
-          <li><span class="trading-card-label"><i class="ra ra-crystal-wand"></i> Magic:</span> 0</li>
-        </ul>
-        <p class="trading-card-text">Write an interesting fact about your favorite animal...</p>
-      </div>
-    </div> <!-- /.trading-card-body -->
+      <!-- ## Trading Card Body -->
+      <div class="trading-card-body">
+        <div class="trading-card-image">
+          <img src="img/werewolf4.jpg" alt="Alfhildr, Scourge of Blackmarsh snarling and standing menacingly with his shamanic staff in hand.">
+        </div>
 
-    <!-- ## Trading Card Footer -->
-    <div class="trading-card-footer">
-			<p class="trading-card-text">Write a brief description about your favorite animal...</p>
-		</div> <!-- /.trading-card-footer -->
-	</div> <!-- /.trading-card -->
+        <!-- secondary title placement here! -->
+
+        <!-- <div class="trading-card-stats">
+        </div> -->
+
+        <div class="trading-card-info">
+          <ul class="trading-card-stats">
+            <!-- Health/Hit Points -->
+            <li><span class="trading-card-label" title="Hit Points"><i class="ra ra-health"></i></span> 25</li>
+            <!-- <li><span class="trading-card-label"><i class="ra ra-round-bottom-flask"></i></span> 25</li> -->
+            <!-- <li><span class="trading-card-label"><i class="ra ra-corked-tube"></i></span> 25</li> -->
+            <!-- Armour Class -->
+            <!-- <li><span class="trading-card-label"><i class="ra ra-round-shield"></i></span> 11</li> -->
+            <li><span class="trading-card-label" title="Armour Class"><i class="ra ra-shield"></i></span> 11</li>
+            <!-- Physical Points -->
+            <li><span class="trading-card-label" title="Physical Points"><i class="ra ra-sword"></i></span> 1d6</li>
+            <!-- <li><span class="trading-card-label"><i class="ra ra-crossed-swords"></i></span> 1d6</li> -->
+            <!-- <li><span class="trading-card-label"><i class="ra ra-plain-dagger"></i></span> 1d6</li> -->
+            <!-- Magic Points -->
+            <!-- <li><span class="trading-card-label"><i class="ra ra-crystal-wand"></i></span> 1d12</li> -->
+            <!-- <li><span class="trading-card-label"><i class="ra ra-book"></i></span> 1d12</li> -->
+            <li><span class="trading-card-label" title="Magic Points"><i class="ra ra-scroll-unfurled"></i></span> 1d12</li>
+          </ul>
+
+          <br>
+          <div class="clearfix"></div>
+          <hr>
+
+          <p class="trading-card-text">If Alfhildr enters the battlefield at night, you may cast a free spell as Alfhildr. Alfhildr has advantage while casting spells at night.</p>
+          <ul class="trading-card-list">
+            <li class="trading-card-list-title"><i class="ra ra-book"></i> Spells known:</li>
+            <li>Detect magic</li>
+            <li>Shapeshift</li>
+            <li>Silence</li>
+            <!-- <li>Magic Missile</li> -->
+          </ul>
+          <div class="clearfix"></div>
+          <p class="trading-card-text flavor">The werewolf is a widespread concept in European folklore, existing in many variants, developed during the medieval period.</p>
+        </div>
+      </div> <!-- /.trading-card-body -->
+
+      <!-- ## Trading Card Footer -->
+      <div class="trading-card-footer">
+        <p class="trading-card-text legal float-left"><span class="trading-card-label"><i class="ra ra-quill-ink"></i> Artist:</span> <a target="_blank" href="http://powerlisting.wikia.com/wiki/File:Werewolf-shaman-werewolves-3893595-504-750.jpg">Unknown</a>&nbsp; | &nbsp;</p>
+        <p class="trading-card-text legal float-left"><span class="trading-card-label"><i class="ra ra-hammer"></i> Designer:</span> Jordan Brauer</p>
+        <p class="trading-card-text legal float-right"><i class="ra ra-lg ra-wolf-head"></i> <span class="trading-card-label">ID#:</span> 001/001</p>
+        <div class="clearfix"></div>
+      </div> <!-- /.trading-card-footer -->
+    </div> <!-- /.trading-card -->
+  </div> <!-- /#canvas -->
 </body>
 </html>

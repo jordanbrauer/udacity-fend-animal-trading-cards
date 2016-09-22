@@ -3,14 +3,15 @@
  * Author:  Jordan Brauer <jbrauer.inc@gmail.com>
  * Created: 09/21/2016 <MM/DD/YYYY>
  */
+@charset "UTF-8";
 
 /* Set box-sizing to border-box for sizing/margin/padding consistency reasons */
 * {
   box-sizing: border-box;
 }
 
-/* Declare global font-size for em unit usage. */
-html{
+/* Declare global font-size for em unit usage through :root. */
+:root{
   font-size: 16px;
   font-family: Helvetica, Arial, sans-serif;
 }
@@ -21,122 +22,261 @@ body * {
   padding: 0;
 }
 
-@font-face {
-  font-family: DarkII;
-  src: url(../fonts/aniron/aniron_bold.ttf) format('truetype');
+body {
+  background: #222;
+  text-align: center;
+  position: relative;
 }
+
+hr {
+  margin: 0 0.5rem 0 0.5rem;
+  border-width: 0;
+  height: 0.066rem;
+  border-color: #999;
+  background: #999;
+}
+
+#canvas {
+  margin: 0 auto;
+  padding: 1rem;
+  width: auto;
+  height: auto;
+  display: inline-block;
+  box-shadow: 0.25rem 0.33rem 1rem #000;
+  background-color: #efefef;
+  background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent);
+  background-size:60px 60px;
+}
+
+
 
 /* Trading Card */
 .trading-card {
-  display: inline-block;
   margin: 0.5rem;
   padding: 0.5rem;
-  width: calc(18.75rem + 0.5rem);
-  max-width: calc(18.75rem + 0.5rem);
+  width: calc(18.75rem + 1.85rem);
+  max-width: calc(18.75rem + 1.85rem);
   height: auto;
-  border: 0.25rem solid #111;
+  display: inline-block;
+  background: linear-gradient(0deg,rgba(9, 117, 0, 0.4),rgba(9, 117, 0, 0.4)), url(../img/fog-texture.png) top left repeat;
+  background-color: rgba(7, 96, 0, 0.61); /* fall back if no image is loaded */
+  border: 0.5rem solid #333;
   border-radius: 0.33rem;
-  background: #0b9;
-  font-family: DarkII, "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  box-shadow: 0.25rem 0.33rem 1rem #666;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   font-size: 1rem;
+  text-align: left;
 }
 
 /* Trading Card Header */
 .trading-card-header {
-  background: #eee;
-  padding: 0.5rem;
-  border: 1px solid #111;
-  border-radius: 0.33rem;
+  /*padding: 0.5rem;*/
+  border: 0px solid #111;
+  border-radius: 0.1rem;
+  font-family: Immortal, "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
 .trading-card-title {
-  font-size: 0.50rem;
+  padding: 0 0.15rem 0 0.15rem;
+  color: #efefef;
+  font-size: 0.60rem;
+  letter-spacing: 0.075rem;
   text-transform: uppercase;
-  float: left;
+  text-shadow: 0.025rem 0.025rem 0.05rem #111;
 }
-
 .trading-card-title::first-letter {
   font-size: 1rem;
   text-transform: uppercase;
 }
 
 .trading-card-type {
-  /*background: #f00;*/
+  font-size: 0.66em;
+  letter-spacing: 0.05rem;
+  color: #efefef;
+  margin: 0 0 0.15rem 0;
+  padding: 0 0.15rem 0 0.15rem;
+  text-shadow: 0.025rem 0.025rem 0.05rem #111;
+}
+
+.trading-card-type ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.trading-card-type li {
+  float: left;
+}
+.trading-card-type li:not(:last-child):after {
+  content: " •\00a0";
+  /*content: " |\00a0";*/
+  font-size: 0.5rem;
+}
+
+.trading-card-level {
   float: right;
   text-align: right;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family: Consolas,monaco,monospace;
+  font-size: 0.75rem;
+  font-weight: bold;
+  /*text-decoration: underline;*/
+  /*line-height: 0.75rem;*/
+  color: #efefef;
+  text-shadow: 0.025rem 0.025rem 0.05rem #111;
 }
 
 /* Trading Card Body */
 .trading-card-body {
   margin: 0.5rem 0 0.5rem 0;
-  background: #bbb;
-  /*border: 1px solid #111;*/
-  border-radius: 0.5rem;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  border-radius: 0.1rem;
 }
 
+.trading-card-image {
+  width: 100%;
+  height: 200px;
+  border: 0.15rem outset #888;
+  box-shadow: 0rem 0rem 0.75rem #111;
+  background: #ccc url(../img/placeholder.png) center center no-repeat /* backup for card image */
+}
 .trading-card-image img {
   width: 100%;
   max-width: 18.75rem;
   height: auto;
-  border: 1px solid #111;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
 }
 
 .trading-card-info {
+  /*border: 0.1rem solid #999;*/
+  border: 0.15rem outset #888;
+  margin: 0.5rem 0 0 0;
+  font-size: 0.8rem;
+  /*padding: 0.5rem;*/
+  background: linear-gradient(0deg, hsla(46,55%,82%,0.66), hsla(46,55%,76%,1)), url(../img/parchment-texture.jpg) top left repeat;
+  background-color: #efefef; /* fall back if no image is loaded */
+}
+
+.trading-card-label {
+  padding: 0;
+  font-weight: bold;
+  color: #111;
+  text-shadow: 0.025rem 0.025rem 0.05rem #999;
+}
+
+.trading-card-stats {
+  padding: 0.5rem;
+  /*margin-bottom: 0.5rem;*/
+  list-style: none;
+}
+
+.trading-card-stats li {
+  float: left;
+  padding: 0.1rem;
+  /*margin: 0.1rem;*/
+  color: #444;
+  font-family: Consolas,monaco,monospace;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  width: 25%;
+}
+.trading-card-stats li:not(:last-child):after {
+  content: " |";
+  color: #999;
+}
+.trading-card-stats li .trading-card-label {
+  -webkit-text-stroke: 0.075rem #333;
+  -moz-text-stroke: 0.075rem #333;
+  -o-text-stroke: 0.075rem #333;
+  text-stroke: 0.075rem #333;
+}
+.trading-card-stats li:nth-of-type(1) .trading-card-label {
+  /*color: #710C0C;*/
+  color: #038100;
+}
+.trading-card-stats li:nth-of-type(2) .trading-card-label {
+  color: #2039B8;
+}
+.trading-card-stats li:nth-of-type(3) .trading-card-label {
+  /*color: #B5A300;*/
+  color: #B81010;
+}
+.trading-card-stats li:nth-of-type(4) .trading-card-label {
+  /*color: #024E00;*/
+  color: #730572;
+}
+
+.trading-card-list {
+  /*padding: 0.5rem;*/
+  padding: 0 0.5rem;
+  margin: 0;
+  list-style: none;
+}
+.trading-card-list li {
+  float: left;
+  /*padding: 0 0 0 1rem;*/
+  text-transform: capitalize;
+  text-align: center;
+  color: #333;
+}
+.trading-card-list li:nth-of-type(1) {
+  float: none;
+  font-weight: bold;
+  padding: 0;
+  text-align: left;
+  color: initial;
+}
+.trading-card-list li:nth-of-type(2) {
+  padding: 0 0 0 1rem;
+}
+.trading-card-list li:not(:first-of-type):after {
+  content: " •\00a0";
+  /*content: " |\00a0";*/
+  font-size: 0.5rem;
+}
+.trading-card-list li:last-child:after {
+  content: "";
 }
 
 .trading-card-text {
   padding: 0.5rem;
 }
 
-.trading-card-list {
-  padding: 0.5rem;
-  list-style: none;
+.trading-card-body .trading-card-text {
+  padding: 0 0.5rem 0 0.5rem;
+}
+.trading-card-body .trading-card-text:first-of-type {
+  /*margin: 0.25rem 0 0 0;*/
 }
 
-.trading-card-list li {
+.trading-card-text.flavor {
+  margin: 0.5rem 0;
+  font-style: italic;
+  color: #444;
+}
+.trading-card-text.flavor:before {content: '"';}
+.trading-card-text.flavor:after {content: '"';}
+
+.trading-card-text.legal {
+  font-size: 0.5rem;
   padding: 0;
-  /*float: right;*/
 }
-
-.trading-card-list li:nth-of-type(1) {
-  float: right;
-}
-
-.trading-card-list li:nth-of-type(3) {
-  float: right;
-}
-
-.trading-card-label {
-  padding: 0;
-  font-weight: bold;
+.trading-card-text.legal a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 /* Trading Card Footer */
 .trading-card-footer {
-  background: #eee;
-  padding: 0.5rem;
-  border: 1px solid #111;
-}
-
-/* special styling for trading card footer text */
-.trading-card-footer .trading-card-text {
-  font-size: 0.75rem;
-  color: #aaa;
+  color: #efefef;
+  text-shadow: 0.025rem 0.025rem 0.05rem #111;
   padding: 0;
-  font-style: italic;
 }
-.trading-card-footer .trading-card-text:before {
-  content: '"';
-}
-.trading-card-footer .trading-card-text:after {
-  content: '"';
+.trading-card-footer .trading-card-label {
+  color: #efefef;
+  text-shadow: 0.025rem 0.025rem 0.05rem #111;
 }
 
 /* Helper Classes */
-.clearfix{
-  clear: both;
-}
+.clearfix {clear: both;}
+
+.float-left {float: left;}
+.float-right {float: right;}

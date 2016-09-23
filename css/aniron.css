@@ -1,5 +1,0 @@
-/* create a font-face for the card font. */
-@font-face {
-  font-family: Aniron;
-  src: url(../fonts/aniron/aniron_bold.ttf) format("opentype");
-}

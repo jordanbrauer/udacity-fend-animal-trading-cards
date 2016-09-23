@@ -3,23 +3,26 @@
 <head>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Animal Trading Cards</title>
+	<title>Werewolf | Animal Trading Cards</title>
   <meta name="author" content="Jordan Brauer">
   <!-- css -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/rpg-awesome.min.css">
-  <link rel="stylesheet" href="css/aniron.css">
   <link rel="stylesheet" href="css/immortal.css">
 </head>
 <body>
+  <!-- # Canvas -->
   <div id="canvas">
-    <!-- # Trading Card -->
-    <div class="trading-card">
-      <!-- ## Trading Card Header -->
-      <div class="trading-card-header">
-        <span class="trading-card-level">Lv.4</span>
-        <h3 class="trading-card-title">Alfhildr, Scourge of Blackmarsh</h3>
-        <div class="trading-card-type">
+    <!-- ## Trading Card -->
+    <div class="white blue black red green gold card">
+      <!-- ### Trading Card Header -->
+      <div class="card-header">
+        <!-- card name -->
+        <h3 class="card-name">Alfhildr, Scourge of Blackmarsh</h3>
+        <!-- card level -->
+        <span class="card-level"><strong>Lv.4</strong></span>
+        <!-- card type -->
+        <div class="card-type">
           <ul>
             <li>Creature</li>
             <li>Hero</li>
@@ -27,45 +30,71 @@
           </ul>
           <div class="clearfix"></div>
         </div>
-      </div> <!-- /.trading-card-header -->
+      </div> <!-- /.card-header -->
 
-      <!-- ## Trading Card Body -->
-      <div class="trading-card-body">
-        <div class="trading-card-image">
-          <img src="img/werewolf4.jpg" alt="Alfhildr, Scourge of Blackmarsh snarling and standing menacingly with his shamanic staff in hand.">
+      <!-- ### Trading Card Body -->
+      <div class="card-body">
+        <!-- card image -->
+        <div class="card-image">
+          <img src="img/werewolf.jpg" alt="Alfhildr, Scourge of Blackmarsh snarling and standing menacingly with his shamanic staff in hand.">
         </div>
-        <div class="trading-card-info">
-          <p class="trading-card-text">If Alfhildr enters the battlefield at night, you may cast a free spell as Alfhildr. Alfhildr has advantage while casting spells at night.</p>
-
-          <ul class="trading-card-list">
-            <li><i class="ra ra-hand"></i> <strong>Ability Scores:</strong></li>
-            <li><span class="trading-card-label" title="Hit Points"><i class="ra ra-health"></i></span> 25</li>
-            <li><span class="trading-card-label" title="Armour Class"><i class="ra ra-round-shield"></i></span> 11</li>
-            <li><span class="trading-card-label" title="Physical Points"><i class="ra ra-sword"></i></span> 1d6</li>
-            <li><span class="trading-card-label" title="Magic Points"><i class="ra ra-scroll-unfurled"></i></span> 1d12</li>
+        <!-- card info -->
+        <div class="card-info">
+          <!-- card text -->
+          <p class="card-text">If Alfhildr enters the battlefield at night, you may cast a free spell as Alfhildr. Alfhildr has advantage while casting spells at night.</p>
+          <!-- card list -->
+          <ul class="card-list">
+            <li>
+              <i class="ra ra-hand"></i>
+              <strong>Ability Scores:</strong>
+            </li>
+            <li><i class="ra ra-health"></i> 25</li>
+            <li><i class="ra ra-round-shield"></i> 11</li>
+            <li><i class="ra ra-sword"></i> 1d6</li>
+            <li><i class="ra ra-scroll-unfurled"></i> 1d12</li>
           </ul>
+          <!-- prevent .card-info from collapsing on itself due to floating list elements -->
           <div class="clearfix"></div>
-
-          <ul class="trading-card-list">
-            <li><i class="ra ra-book"></i> <strong>Spell book:</strong></li>
+          <!-- card list -->
+          <ul class="card-list">
+            <li>
+              <i class="ra ra-book"></i>
+              <strong>Spell book:</strong>
+            </li>
             <li>Detect magic</li>
             <li>Shapeshift</li>
             <li>Silence</li>
           </ul>
+          <!-- prevent .card-info from collapsing on itself due to floating list elements -->
           <div class="clearfix"></div>
+          <!-- seperate the rules text from flavour text -->
           <hr>
-          <p class="trading-card-text flavor">The werewolf is a widespread concept in European folklore, existing in many variants, developed during the medieval period.</p>
+          <!-- card flavour text -->
+          <p class="flavor card-text">A werewolf, or lycanthrope is a folkloric human with the ability to shapeshift into a wolf-like creature, either purposely or through a curse or affliction.</p>
         </div>
-      </div> <!-- /.trading-card-body -->
+      </div> <!-- /.card-body -->
 
-      <!-- ## Trading Card Footer -->
-      <div class="trading-card-footer">
-        <p class="trading-card-text legal float-left"><span class="trading-card-label"><i class="ra ra-quill-ink"></i> Artist:</span> <a target="_blank" href="http://powerlisting.wikia.com/wiki/File:Werewolf-shaman-werewolves-3893595-504-750.jpg">Unknown</a>&nbsp; | &nbsp;</p>
-        <p class="trading-card-text legal float-left"><span class="trading-card-label"><i class="ra ra-hammer"></i> Designer:</span> Jordan Brauer</p>
-        <p class="trading-card-text legal float-right"><i class="ra ra-lg ra-wolf-head trading-card-set-symbol"></i> <span class="trading-card-label">ID#:</span> 001/001</p>
+      <!-- ### Trading Card Footer -->
+      <div class="card-footer">
+        <!-- card text -->
+        <p class="card-text float-left">
+          <i class="ra ra-quill-ink"></i>
+          <strong>Artist:</strong> <a target="_blank" href="http://powerlisting.wikia.com/wiki/File:Werewolf-shaman-werewolves-3893595-504-750.jpg">Unknown</a> &nbsp;| &nbsp;
+        </p>
+        <!-- card-text -->
+        <p class="card-text float-left">
+          <i class="ra ra-hammer"></i>
+          <strong>Designer:</strong> Jordan Brauer
+        </p>
+        <!-- card-text -->
+        <p class="card-text float-right">
+          <i class="ra ra-lg ra-wolf-head card-set-symbol rare"></i>
+          <strong>ID#:</strong> 001/001
+        </p>
+        <!-- prevent footer container from collapsing due to floating elements -->
         <div class="clearfix"></div>
-      </div> <!-- /.trading-card-footer -->
-    </div> <!-- /.trading-card -->
+      </div> <!-- /.card-footer -->
+    </div> <!-- /.card -->
   </div> <!-- /#canvas -->
 </body>
 </html>

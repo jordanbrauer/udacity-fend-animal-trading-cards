@@ -8,7 +8,7 @@
 /* 0. reset default element margins & paddings */
 /* 1. set basic default styles. */
 :root {
-  font-size: 16px; /* 1. */
+  font-size: 16px; /* 1. 1rem = 16px. My favourite units to work with! Easy math. */
   font-family: Helvetica, Arial, sans-serif; /* 1. */
 }
 
@@ -25,35 +25,50 @@ body {
 
 hr {
   margin: 0.5rem; /* 1. */
-  border-width: 0; /* 0. */
   height: 0.066rem; /* 1. */
+  border-width: 0; /* 0. */
   border-color: #999; /* 1. */
   background: #999; /* 1. */
 }
 
-/* Canavas for card */
+/* Create custom web font families */
+@font-face {
+  font-family: Immortal;
+  src: url(../fonts/immortal/immortal.ttf) format("truetype")
+}
+
+/**
+ * # Canavas
+ * ---------
+ */
 #canvas {
   margin: 0 auto;
   padding: 1rem;
   width: auto;
   height: auto;
   display: inline-block;
+  text-align: left;
+  font-size: 0.75rem;
   box-shadow: 0.25rem 0.33rem 1rem #000;
   background-color: #efefef;
   /**
    * Experimental grid line drawing for the canvas background below.
-   * I like to try and create things using CSS/SCSS where possible over using images. Ultimately opted out for plain bg tho.
+   * I like to try and create things using CSS/SCSS where possible over using images.
+   * Ultimately opted out for plain bg though.
    */
   /*background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent);
   background-size:60px 60px;*/
 }
 
-/* Trading Card */
-.trading-card {
+/**
+ * ## Trading Card
+ * --------------
+ */
+.card {
   margin: 0.5rem;
   padding: 0.5rem;
-  display: inline-block;
-  overflow: hidden; /* Prevent runaway content. */
+  display: inline-block; /* if there were multiple on the page, allows them to be placed next to each other instead of stacked */
+  overflow: hidden; /* Prevent runaway content IF it happens. */
   width: calc(18.75rem + 1.85rem);
   max-width: calc(18.75rem + 1.85rem); /* Not really necessary, but I figured a constraint on the width with a hidden overflow is nice just in case. */
   height: auto;
@@ -62,217 +77,246 @@ hr {
   box-shadow: 0.25rem 0.33rem 1rem #666;
   text-align: left;
   font-size: 1rem;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  background: linear-gradient(0deg,rgba(9, 117, 0, 0.4),rgba(9, 117, 0, 0.4)), url(../img/fog-texture.png) top left repeat;
-  background-color: rgba(7,96,0,0.61); /* fall back if no image is loaded */
+  background: linear-gradient(0deg, rgba(82, 40, 13, 0.4), rgba(82, 40, 13, 0.4)), url(../img/fog-texture.png) top left repeat; /* default card color */
+  background-color: rgba(82, 40, 13, 0.4); /* fall back if no image is loaded */
+}
+  /**
+   * unused color classes, but left for fun. Heavily inspired by Magic: the Gathering!
+   * try it out in dev tools by checking the background property box. :)
+   * background-color properties are a fallback if no image is loaded/missing.
+   */
+  .card.white {
+    /*background: linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url(../img/fog-texture.png) top left repeat;*/
+    /*background-color: rgba(255, 255, 255, 0.6);*/
+}
+  .card.blue {
+    /*background: linear-gradient(0deg, rgba(47, 122, 210, 0.4), rgba(47, 122, 210, 0.4)), url(../img/fog-texture.png) top left repeat;*/
+    /*background-color: rgba(47, 122, 210, 0.6);*/
+}
+  .card.black {
+    /*background: linear-gradient(0deg, rgba(20, 20, 20, 0.4), rgba(20, 20, 20, 0.4)), url(../img/fog-texture.png) top left repeat;*/
+    /*background-color: rgba(20, 20, 20, 0.6);*/
+}
+  .card.red {
+    /*background: linear-gradient(0deg, rgba(212, 46, 46, 0.4), rgba(212, 46, 46, 0.4)), url(../img/fog-texture.png) top left repeat;*/
+    /*background-color: rgba(212, 46, 46, 0.6);*/
+}
+  .card.green {
+    /*background: linear-gradient(0deg, rgba(9, 117, 0, 0.4), rgba(9, 117, 0, 0.4)), url(../img/fog-texture.png) top left repeat;*/
+    /*background-color: rgba(7, 96, 0, 0.6);*/
+}
+  .card.gold {
+    /*background: linear-gradient(0deg, rgba(230, 220, 101, 0.4), rgba(230, 220, 101, 0.4)), url(../img/fog-texture.png) top left repeat;*/
+    /*background-color: rgba(230, 220, 101, 0.6);*/
 }
 
-/* Trading Card Header */
-.trading-card-header {
-  border: 0rem solid transparent;
-  border-radius: 0.1rem;
+/**
+ * Trading Card Common/Global Styles
+ * ---------------------------------
+ */
+.card-header,
+.card-body {
   font-family: Immortal, "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
-/* Trading Card Title */
-.trading-card-title {
-  padding: 0 0.15rem;
-  color: #efefef;
-  font-size: 0.6rem;
-  letter-spacing: 0.075rem;
-  text-transform: uppercase;
+.card-header,
+.card-footer {
   text-shadow: 0.025rem 0.025rem 0.05rem #111;
+  color: #efefef;
 }
-  .trading-card-title::first-letter {
-    font-size: 1rem;
+
+.card-name,
+.card-type,
+.card-level {
+  font-size: 0.66rem;
+}
+
+.card-name,
+.card-type {
+  padding: 0 0.15rem;
+}
+
+/**
+ * ### Trading Card Header
+ * ----------------------
+ */
+.card-header {
+  border: 0rem solid transparent; /* does this count as a border around the name? ;D */
+  border-radius: 0.1rem;
+}
+
+/* Trading Card Name */
+.card-name {
+  text-transform: uppercase;
+  letter-spacing: 0.075rem;
+}
+  .card-name::first-letter {
     text-transform: uppercase;
+    font-size: 1rem;
 }
 
 /* Trading Card Type */
-.trading-card-type {
-  font-size: 0.66em;
+.card-type {
   letter-spacing: 0.05rem;
-  color: #efefef;
-  margin: 0 0 0.15rem 0;
-  padding: 0 0.15rem 0 0.15rem;
-  text-shadow: 0.025rem 0.025rem 0.05rem #111;
 }
-  .trading-card-type ul {
-    margin: 0;
-    padding: 0;
+  .card-type ul {
     list-style-type: none;
 }
-  .trading-card-type li {
+  .card-type li {
     float: left;
 }
-  .trading-card-type li:not(:last-child):after {
+  .card-type li:not(:last-child):after {
     content: " •\00a0";
     font-size: 0.5rem;
 }
 
 /* Trading Card Level */
-.trading-card-level {
+.card-level {
   float: right;
-  text-align: right;
+  font-weight: bold; /* in case strong tags are missing or default browser styling is not bold. */
   font-family: Consolas, monaco, monospace;
-  font-size: 0.66rem;
-  font-weight: bold;
-  color: #efefef;
-  text-shadow: 0.025rem 0.025rem 0.05rem #111;
 }
 
-/* Trading Card Body */
-.trading-card-body {
-  margin: 0.5rem 0 0.5rem 0;
-  border-radius: 0.1rem;
-  font-family: Immortal, "Palatino Linotype", "Book Antiqua", Palatino, serif;
+/**
+ * ### Trading Card Body
+ * --------------------
+ */
+.card-body {
+  margin: 0.5rem 0;
   font-size: 0.66rem;
 }
-  .trading-card-body .trading-card-text {
-    padding: 0.5rem 0.5rem 0 0.5rem;
+  .card-body .card-text {
+    padding: 0 0.5rem;
     line-height: 0.85rem;
 }
-  .trading-card-body .trading-card-text:last-of-type {
-    padding: 0 0.5rem 0.5rem 0.5rem;
+  .card-body .card-text:first-of-type {
+    padding-top: 0.5rem;
+}
+  .card-body .card-text:last-of-type {
+    padding-bottom: 0.5rem;
 }
 
 /* Trading Card Image */
-.trading-card-image {
+/* container for the image */
+.card-image {
+  margin-bottom: 0.5rem; /*space between the image and text box */
   width: 100%;
   height: 200px;
   border: 0.15rem outset #888;
   box-shadow: 0rem 0rem 0.75rem #111;
   background: #ccc url(../img/placeholder.png) center center no-repeat /* backup for card image */
 }
-  .trading-card-image img {
+  .card-image img {
     width: 100%;
-    max-width: 18.75rem;
-    height: auto;
+    max-width: 18.75rem; /* constrain image width to 300px */
+    height: auto; /* retain image aspect ratio. */
 }
 
 /* Trading Card Info */
-.trading-card-info {
+/* container for the rules text */
+.card-info {
   border: 0.15rem outset #888;
-  margin: 0.5rem 0 0 0;
   font-size: 0.8rem;
-  background: linear-gradient(0deg, hsla(46,55%,82%,0.50), hsla(46,55%,76%,0.75)), url(../img/parchment-texture2.png) top left repeat;
+  background: linear-gradient(0deg, hsla(46, 55%, 82%, 0.5), hsla(46, 55%, 76%, 0.75)), url(../img/parchment-texture.png) top left repeat;
   background-color: #efefef; /* fall back if no image is loaded */
 }
 
-/* Trading Card Label */
-.trading-card-label {
-  padding: 0;
-  font-weight: bold;
-  color: #111;
-  text-shadow: 0.025rem 0.025rem 0.05rem #999;
-}
-
-/* Trading Card Stats */
-.trading-card-stats {
-  padding: 0.25rem 0 0.25rem 0;
-  list-style: none;
-
-}
-  .trading-card-stats li {
-    float: left;
-    color: #444;
-    font-family: Consolas,monaco,monospace;
-    font-weight: bold;
-    text-align: center;
-    width: 25%;
-}
-  .trading-card-stats li:not(:last-child):after {
-    content: " \00a0|";
-    color: #999;
-}
-  .trading-card-stats li:nth-of-type(1) .trading-card-label {
-}
-  .trading-card-stats li:nth-of-type(2) .trading-card-label {
-}
-  .trading-card-stats li:nth-of-type(3) .trading-card-label {
-}
-  .trading-card-stats li:nth-of-type(4) .trading-card-label {
-}
-
 /* Trading Card List */
-.trading-card-list {
+/* used to store listed information about the card */
+.card-list {
   padding: 0 0.5rem;
   margin: 0;
   list-style: none;
 }
-  .trading-card-list li {
+  .card-list li {
     float: left;
-    text-transform: capitalize;
     text-align: center;
-    color: #333;
+    text-transform: capitalize;
+    color: #3a3ab8;
 }
-  .trading-card-list li:nth-of-type(1) {
-    float: none;
+  .card-list li:first-of-type { /* the first list item acts as the title/header of the list */
     padding: 0;
+    float: none;
     text-align: left;
+    font-weight: bold; /* in case strong tags are missing */
     color: initial;
 }
-  .trading-card-list li:nth-of-type(2) {
-    padding: 0 0 0 1.1rem;
+  .card-list li:nth-of-type(2) {
+    padding-left: 1.1rem; /* indents the seconds item to push the entire horizontal list right. This is to clearly show which list the items belong to. */
 }
-  .trading-card-list li:not(:first-of-type):after {
+  .card-list li:not(:first-of-type):not(:last-of-type):after {
     content: " •\00a0";
     font-size: 0.66rem;
 }
-  .trading-card-list li:last-child:after {
-    content: "";
-}
-  .trading-card-list li:not(:first-of-type) i.ra {
-    color: #fff;
+  .card-list li:not(:first-of-type) i.ra { /* color & stroke ra icons within .card-list except the first*/
     -webkit-text-stroke: 0.05rem #666;
     -moz-text-stroke: 0.05rem #666;
     -o-text-stroke: 0.05rem #666;
     text-stroke: 0.05rem #666;
+    color: #efefef;
 }
 
 /* Trading Card Text */
-.trading-card-text {
+.card-text {
   padding: 0.5rem;
 }
-  .trading-card-text.flavor {
+  .card-text.flavor {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     font-style: italic;
     color: #444;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
-  .trading-card-text.flavor:before {content: '"';}
-  .trading-card-text.flavor:after {content: '"';}
-
-  .trading-card-text.legal {
-    font-size: 0.5rem;
-    padding: 0;
-}
-  .trading-card-text.legal a {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
+  .card-text.flavor:after,
+  .card-text.flavor:before {
+    content: '"';
 }
 
-.trading-card-set-symbol {
-  color: #ffda6a;
-}
-
-/* Trading Card Footer */
-.trading-card-footer {
-  color: #efefef;
-  text-shadow: 0.025rem 0.025rem 0.05rem #111;
+/**
+ * ### Trading Card Footer
+ * -----------------------
+ */
+.card-footer .card-text {
   padding: 0;
-}
-  .trading-card-footer .trading-card-label {
-    color: #efefef;
-    text-shadow: 0.025rem 0.025rem 0.05rem #111;
+  font-size: 0.5rem;
 }
 
-/* Helper Classes */
+.card-footer a {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Set Symbol Colors*/
+.card-set-symbol {
+  -webkit-text-stroke: 0.015rem #333;
+  -moz-text-stroke: 0.015rem #333;
+  -o-text-stroke: 0.015rem #333;
+  text-stroke: 0.015rem #333;
+  color: #efefef;
+}
+  .card-set-symbol.common { /* unused, but left for fun. */
+    color: inherit;
+}
+  .card-set-symbol.uncommon { /* unused, but left for fun. */
+    color: silver;
+}
+  .card-set-symbol.rare {
+    color: #ffda6a;
+}
+  .card-set-symbol.epic { /* unused, but left for fun. */
+    color: #209622;
+    -webkit-text-stroke-color: #efefef;
+    -moz-text-stroke-color: #efefef;
+    -o-text-stroke-color: #efefef;
+    text-stroke-color: #efefef;
+}
+
+/**
+ * Helper Classes
+ * --------------
+ */
 .clearfix {clear: both;}
 
 .float-left {float: left;}
 .float-right {float: right;}
 
-.ra {
-  vertical-align: middle;
-}
+.ra {vertical-align: middle;} /* vertically align the ra icons */
